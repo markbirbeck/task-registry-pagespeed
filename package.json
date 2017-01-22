@@ -21,6 +21,7 @@
     "mocha": "^3.2.0"
   },
   "dependencies": {
+    "psi": "^2.0.4",
     "undertaker-registry": "^1.0.0"
   }
 }
