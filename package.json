@@ -2,6 +2,15 @@
   "name": "task-registry-pagespeed",
   "version": "0.1.0",
   "description": "A task registry for the PageSpeed command.",
+  "keywords": [
+    "custom registry",
+    "gulp",
+    "gulpfriendly",
+    "gulpplugin",
+    "task registry",
+    "tasks",
+    "undertaker"
+  ],
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
