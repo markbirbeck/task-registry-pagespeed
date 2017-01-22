@@ -1,7 +1,7 @@
 {
-  "name": "js-app-templates",
+  "name": "task-registry-pagespeed",
   "version": "0.1.0",
-  "description": "A collection of templates for my JavaScript apps.",
+  "description": "A task registry for the PageSpeed command.",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
