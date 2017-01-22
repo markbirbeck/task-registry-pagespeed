@@ -25,6 +25,18 @@ class TasksRegistry extends UndertakerRegistry {
     super();
 
     /**
+     * These are the defaults in the Web Starter Kit:
+     */
+
+    let defaults = {
+      url: 'example.com',
+      strategy: 'mobile',
+      // By default we use the PageSpeed Insights free (no API key) tier.
+      // Use a Google Developer API key if you have one: http://goo.gl/RkN0vE
+      // key: 'YOUR_API_KEY'
+    };
+
+    /**
      * The namespace is optional:
      */
 
@@ -49,7 +61,7 @@ class TasksRegistry extends UndertakerRegistry {
      * Make the options available to all tasks in this registry:
      */
 
-    this.opts = opts;
+    this.opts = Object.assign({}, defaults, opts);
   }
 
   /**
@@ -58,6 +70,7 @@ class TasksRegistry extends UndertakerRegistry {
    * registry is being attached to.
    */
   init(taker) {
+    const pagespeed = require('psi').output;
 
     /**
      * Get the original options:
@@ -66,13 +79,14 @@ class TasksRegistry extends UndertakerRegistry {
     let opts = this.opts;
 
     /**
-     * Register a task with the provided prefix:
+     * Register the pagespeed task with the provided prefix:
      */
 
-    taker.task(opts.prefix + 'mytask', (cb) => {
-      console.log('Ran', opts.prefix + 'mytask', 'with options:', opts);
-      cb();
-    });
+    taker.task(opts.prefix + 'pagespeed', (cb) =>
+      pagespeed(opts.url, {
+        strategy: opts.strategy,
+      }, cb)
+    );
 
     /**
      * Set a default task. This will be either the namespace or 'default':
@@ -81,7 +95,7 @@ class TasksRegistry extends UndertakerRegistry {
 
     taker.task(
       opts.namespace || 'default',
-      taker.series(opts.prefix + 'mytask')
+      taker.series(opts.prefix + 'pagespeed')
     );
   }
 }
