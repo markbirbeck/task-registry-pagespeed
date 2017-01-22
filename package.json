@@ -1,6 +1,6 @@
 {
   "name": "task-registry-pagespeed",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A task registry for the PageSpeed command.",
   "keywords": [
     "custom registry",
